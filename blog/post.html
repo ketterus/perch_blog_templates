@@ -1,0 +1,74 @@
+<section id="blog-detail-head">
+    <div class="hero text-center" data-500-start="opacity:0.05" data-50-start="opacity:1">              
+        <h1 class="animated" data-animation-delay="350" data-animation="fadeIn"><perch:blog id="postTitle" type="text" label="Title" required="true" size="xl autowidth" order="1" /></h1>
+        <perch:if exists="subtitle"><h2 class="animated" data-animation-delay="500" data-animation="fadeIn"><perch:blog id="subtitle" type="text" label="Subtitle" size="xl" order="2" /></h2></perch:if>
+        <h5 class="animated row" data-animation-delay="650" data-animation="fadeIn"><i class="fa fa-calendar-o"></i><perch:blog id="postDateTime" type="date" time="true" label="Post Date" format="n/j/y" order="1" /></h5>
+<!--         <div class="space animated" data-animation-delay="850" data-animation="fadeIn"></div> -->
+    </div>
+    <div class="navigation pull-right">
+        <!--prevnextnav-->
+    </div>
+    <div id="slides" data-slide="false" style="<perch:if exists="color">background-color:<perch:blog id="color" type="kirk_spectrum" label="Color" size="m" order="25" help="Background color on index page if no image is specified." />;</perch:if>">
+        <div class="slides-container">
+<!--             <perch:if exists="youtube">
+                <iframe id="youtube-<perch:blog id="_id" type="hidden" />" width="640" height="360" src="http://www.youtube.com/embed/<perch:blog id="youtube" type="youtube" label="YouTube URL" help="http://www.youtube.com/watch?v=..." divider-before="Media" order="15" size="xl" output="id" />?autoplay=0&amp;showinfo=0&amp;rel=0&amp;color=white&amp;controls=1&amp;autohide=1&amp;loop=0&amp;enablejsapi=1&amp;wmode=opaque" frameborder="0" allowfullscreen></iframe>
+            <perch:else /> -->
+                <img src="<perch:if exists="post_image"><perch:blog id="post_image" type="image" label="Post Image" width="1280" height="853" crop="true" order="20" help="Should be at least 1280 x 853." /><perch:else />/img/placeholder/1280x853.png</perch:if>" alt="<perch:blog id="postTitle" />">
+            <!-- </perch:if> -->
+        </div>
+    </div>      
+</section>          
+<section id="blog-detail">
+    <div class="container">
+        
+        <div class="col-md-8">
+            <perch:blog id="postDescHTML" type="textarea" label="Post" order="40" editor="ckeditor" html="true" size="xxl autowidth" required="true" />
+
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                    // domain is set in /inc/top.php
+                    this.page.url = '<perch:blog id="domain" type="hidden" /><perch:blog id="postURL" type="hidden" />';
+                    this.page.identifier = 'post<perch:blog id="postID" type="hidden" />';
+                };
+                
+                (function() {  // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    
+                    s.src = '//rottmancreativegroup.disqus.com/embed.js';
+                    
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="social-icons">
+                <p class="social-share" data-services="pinterest:facebook:twitter:linkedin" data-title="<perch:gallery id="albumTitle" />"></p>
+            </div>
+
+            <perch:if exists="sidebar_text">
+            <div class="sidebar-box">
+                <div class="bd no-round-top">
+                    <perch:blog id="sidebar_text" type="textarea" label="Sidebar Text" order="45" editor="ckeditor" html="true" size="xxl autowidth" help="This text will appear above the global sidebar blocks." />
+                </div>
+            </div>
+            </perch:if>
+
+            <!--sidebar-->
+        </div>
+
+    </div>
+</section>
+
+<perch:categories id="categories" set="blog" label="Categories" display-as="checkboxes" order="15">
+</perch:categories>
+
+<perch:blog id="excerpt" type="textarea" label="Excerpt" order="30" suppress="true" size="s" divider-before="Text Content" />
+<perch:blog id="post_image" type="image" width="750" height="500" crop="true" suppress="true" />
+<perch:blog id="post_image_thumb" type="image" label="Grid Image (thumbnail)" width="750" height="500" crop="true" suppress="true" order="22" help="Optional. Alternative to the Post Image. Will be sized to 750 x 500." />
+<perch:blog id="home_post_image_thumb" type="image" label="Home Grid Image" width="750" height="500" crop="true" suppress="true" order="23" help="Optional. Shows if post is featured on Home page. Will be sized to 750 x 500." />
+
+<perch:template path="pages/attributes/seo_content_form.html" rescope="parent" />

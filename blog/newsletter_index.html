@@ -1,0 +1,35 @@
+
+<div class="row <perch:if exists="post_image">image</perch:if> <perch:if exists="post_image_thumb">image</perch:if>" style="<perch:if exists="post_image_thumb">background-image:url(<perch:blog type="image" id="post_image_thumb" width="750" height="500" crop="true" />);<perch:else /><perch:if exists="post_image">background-image:url(<perch:blog type="image" id="post_image" width="750" height="500" crop="true" />);</perch:if></perch:if><perch:if exists="color">background-color:<perch:blog id="color" />;</perch:if>" data-top-bottom="opacity: 0.05;" data-center-bottom="opacity: 1" data-group="">              
+    <div class="hero">
+        <div class="item text-center">
+            <h2><perch:blog id="postTitle" /></h2>
+            <div class="excerpt"><perch:blog id="excerpt" encode="false" chars="100" /></div>
+
+            <h5><i class="fa fa-calendar-o"></i><perch:blog id="postDateTime" type="date" time="true" label="Post Date" format="n/j/y" order="1" /></h5>
+
+            <!-- <div class="space-rotate"></div>    -->
+        </div>
+    
+        <div class="overlay text-center">
+            <a href="<perch:blog id="postURL" />"><i class="fa fa-plus round-icon"></i></a>    
+        </div>  
+    </div>          
+</div>
+
+<perch:after>
+<perch:if exists="paging">
+<!-- PAGINATION -->
+<div class="pagination-wrap">
+  <ul class="pagination">
+    <perch:if exists="not_first_page">
+        <li><a href="<perch:blog id="prev_url" encode="false" />">Previous</a></li>
+    </perch:if>
+    <li><a>Page <perch:blog id="current_page" /> of <perch:blog id="number_of_pages" /></a></li>
+    <perch:if exists="not_last_page">
+        <li><a class="next-link" href="<perch:blog id="next_url" encode="false" />">Next</a></li>
+        <!-- rewrite="/inspiration/{tag:tag/%s/}{cat:cat:%s/}{page:page/%d/}" -->
+    </perch:if>
+  </ul class="pagination">
+</div>
+</perch:if>
+</perch:after>

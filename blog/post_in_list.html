@@ -1,0 +1,28 @@
+<div class="col-sm-6 col-md-4 col-xs-12 portfolio-link" data-group="<perch:blog id="category_names" />" style="<perch:if exists="color">background-color:<perch:blog id="color" />;</perch:if>">
+    <img src="<perch:if exists="post_image_thumb"><perch:blog type="image" id="post_image_thumb" width="750" height="500" crop="true" /><perch:else /><perch:if exists="post_image"><perch:blog type="image" id="post_image" width="750" height="500" crop="true" /><perch:else />/img/placeholder/750x500.png</perch:if></perch:if>" alt="" class="img-responsive" />
+
+    <div class="overlay text-center">
+        <h2><perch:blog id="postTitle" /></h2>
+        <!-- <h5><perch:blog id="category_names" /></h5> -->
+        <a href="<perch:blog id="postURL" />"><i class="fa fa-plus round-icon"></i></a>
+        <!-- <a href="#" class="portfolio-modal" data-mfp-src="img/portfolio/small-1.jpg"><i class="fa fa-search round-icon"></i></a> -->
+    </div>
+</div>
+
+<perch:after>
+<perch:if exists="paging">
+<!-- PAGINATION -->
+<div class="pagination-wrap">
+  <ul class="pagination">
+    <perch:if exists="not_first_page">
+        <li><a href="<perch:blog id="prev_url" encode="false" />">Previous</a></li>
+    </perch:if>
+    <li><a>Page <perch:blog id="current_page" /> of <perch:blog id="number_of_pages" /></a></li>
+    <perch:if exists="not_last_page">
+        <li><a class="next-link" href="<perch:blog id="next_url" encode="false" />">Next</a></li>
+        <!-- rewrite="/inspiration/{tag:tag/%s/}{cat:cat:%s/}{page:page/%d/}" -->
+    </perch:if>
+  </ul class="pagination">
+</div>
+</perch:if>
+</perch:after>

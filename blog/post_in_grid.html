@@ -1,0 +1,11 @@
+<div class="col-sm-6 col-md-4 col-xs-12 portfolio-link" data-group="<perch:blog id="category_names" />" style="<perch:if exists="color">background-color:<perch:blog id="color" />;</perch:if>">
+	
+	<img src="<perch:if exists="post_image_thumb"><perch:blog type="image" id="post_image_thumb" width="750" height="500" crop="true" /><perch:else /><perch:if exists="post_image"><perch:blog type="image" id="post_image" width="750" height="500" crop="true" /><perch:else />/img/placeholder/750x500.png</perch:if></perch:if>" alt="<perch:blog id="imageAlt" />" class="img-responsive" />
+
+	<div class="overlay text-center">
+		<h2><perch:blog id="postTitle" /></h2>
+		<!-- <h5><perch:blog id="category_names" /></h5> -->
+		<a href="<perch:blog id="postURL" />"><i class="fa fa-plus round-icon"></i></a>
+		<a href="#" class="portfolio-modal" data-mfp-src="<perch:if exists="post_image_thumb"><perch:blog type="image" id="post_image_thumb" width="750" height="500" crop="true" /><perch:else /><perch:if exists="post_image"><perch:blog type="image" id="post_image" width="750" height="500" crop="true" /><perch:else />/img/portfolio/small-1.jpg</perch:if></perch:if>"><i class="fa fa-search round-icon"></i></a>
+	</div>
+</div>
